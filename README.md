@@ -11,7 +11,7 @@ Mes notes pour le site du cours **MAI112 · Préparation à la certification PIX
 - Une présentation qui se lit en scrollant, une slide = un écran
 - Tout est dans **un seul fichier** : `index.html` (HTML, CSS et JavaScript ensemble)
 - Hébergée gratuitement avec **GitHub Pages** (branche `main`, dossier racine)
-- Style calme inspiré de Medium, avec Numi, la mascotte du cours
+- Style calme inspiré de Medium.
 
 ## Plan du cours 01
 
