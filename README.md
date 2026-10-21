@@ -1,8 +1,6 @@
 # PIX_S1 · Cours MAI112
 
-Mes notes pour le site du cours **MAI112 · Préparation à la certification PIX I** (SupNum · L1 · S1).
-
-**Site en ligne : https://em0ani.github.io/PIX_S1/**
+**cours: https://em0ani.github.io/PIX_S1/**
 
 ---
 
