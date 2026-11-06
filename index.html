@@ -355,6 +355,70 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
   html.anim .slide .inner>*{opacity:1;transform:none}
   .chart .line{stroke-dashoffset:0}.chart .area,.chart .pt,.chart text.v{opacity:1}
 }
+
+/* ===== mots-clés des domaines ===== */
+.kw{display:grid;gap:.45em}
+.kw-l{font-family:var(--f-sans);font-weight:600;font-size:.68em;letter-spacing:.12em;text-transform:uppercase;color:var(--kicker)}
+.kw .tags{gap:.4em}
+.kw .tag{background:var(--b);color:var(--c);font-size:.76em}
+
+/* ===== 5 mots par domaine : cartes à toucher ===== */
+.flash{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15em),1fr));gap:.65em}
+.fc{all:unset;cursor:pointer;background:var(--b);border-radius:1.3em;padding:.8em 1.05em;display:grid;gap:.3em;align-content:start;transition:background .2s,box-shadow .2s,transform .15s}
+.fc:hover{transform:translateY(-1px)}
+.fc:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.fc .t{font-family:var(--f-sans);font-weight:700;color:var(--c);display:flex;align-items:center;gap:.55em;line-height:1.25}
+.fc .t i{font-style:normal;flex:none;width:1.75em;height:1.75em;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:.8em}
+.fc .d{font-size:.86em;line-height:1.5;display:none}
+.fc .tap{font-family:var(--f-sans);font-size:.72em;color:var(--muted)}
+.fc[aria-expanded="true"]{background:#fff;box-shadow:inset 0 0 0 2px var(--b)}
+.fc[aria-expanded="true"] .t i{background:var(--b)}
+.fc[aria-expanded="true"] .d{display:block;animation:in .3s ease-out}
+.fc[aria-expanded="true"] .tap{display:none}
+.row{display:flex;flex-wrap:wrap;gap:.5em;align-items:center;justify-content:space-between}
+.pill{all:unset;cursor:pointer;font-family:var(--f-sans);font-weight:600;font-size:.8em;padding:.45em 1.05em;border-radius:999px;background:var(--soft);color:var(--ink)}
+.pill:hover{background:var(--b,var(--soft))}
+.pill.main{background:var(--ink);color:#fff}
+.pill:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* ===== jeu : à quel domaine ? ===== */
+.gq{background:var(--yellow);border-radius:1.4em;padding:.95em 1.3em;font-size:1.12em;font-family:var(--f-sans);font-weight:600;line-height:1.35;min-height:3.4em;display:flex;align-items:center}
+.dpick{display:grid;grid-template-columns:repeat(5,1fr);gap:.5em}
+.dbtn{all:unset;cursor:pointer;background:var(--b);color:var(--c);border-radius:1.2em;padding:.7em .8em;display:grid;gap:.3em;align-content:start;font-family:var(--f-sans);font-weight:700;font-size:.8em;line-height:1.25;transition:transform .15s,opacity .2s}
+.dbtn:hover{transform:translateY(-1px)}
+.dbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.dbtn .num{width:1.9em;height:1.9em;border-radius:50%;background:#fff;display:grid;place-items:center}
+.dbtn.good{background:var(--c);color:#fff}.dbtn.good .num{color:var(--c)}
+.dbtn.bad{background:var(--ko-b);color:var(--ko);box-shadow:inset 0 0 0 2px var(--ko)}
+.dbtn.dim{opacity:.4}
+.dbtn[aria-disabled="true"]{cursor:default;transform:none}
+.gscore{font-family:var(--f-sans);font-size:.8em;font-weight:600;color:var(--muted)}
+.gscore b{color:var(--ink)}
+
+/* ===== ajoute ta question : classement automatique ===== */
+.ask{display:flex;gap:.5em}
+.ask input{flex:1;min-width:0;font:inherit;font-size:.95em;padding:.65em 1.1em;border-radius:999px;border:2px solid var(--soft);background:var(--soft);color:var(--ink)}
+.ask input:focus{outline:none;border-color:var(--c);background:#fff}
+.ask .pill{font-size:.9em;padding:.6em 1.2em}
+.res{border-radius:1.4em;padding:1em 1.2em;background:var(--b,var(--soft));display:grid;gap:.55em;animation:in .3s ease-out}
+.res .dn{font-family:var(--f-sans);font-weight:700;font-size:1.08em;color:var(--c);display:flex;align-items:center;gap:.6em}
+.res .dn .num{width:2em;height:2em;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.res p{font-size:.88em;line-height:1.5}
+.res .tags{gap:.35em}
+.res .tag{background:#fff;color:var(--c);font-size:.74em}
+.fix{display:flex;flex-wrap:wrap;gap:.35em;align-items:center}
+.fix span{font-family:var(--f-sans);font-size:.76em;color:var(--muted);margin-right:.2em}
+.fix button{all:unset;cursor:pointer;width:2em;height:2em;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--c);font-family:var(--f-sans);font-weight:700;font-size:.8em}
+.fix button[aria-pressed="true"]{background:var(--c);color:#fff}
+.fix button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.added{font-family:var(--f-sans);font-size:.78em;color:var(--muted)}
+@media (max-width:640px){
+  .dpick{grid-template-columns:1fr 1fr}
+  .dpick .dbtn:last-child{grid-column:1/-1}
+  .dbtn{grid-template-columns:auto 1fr;align-items:center;gap:.5em}
+  .gq{font-size:1em}
+  .ask{flex-wrap:wrap}.ask input{flex-basis:100%}.ask .pill{flex:1;text-align:center}
+}
 </style>
 </head>
 <body>
@@ -413,7 +477,7 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <li><a href="#p1" class="blue"><span class="n">01</span><h3>Échauffement</h3><span class="min"></span><p>5 questions pour voir ce que tu sais déjà.</p></a></li>
       <li><a href="#p2" class="pink"><span class="n">02</span><h3>La culture numérique</h3><span class="min"></span><p>Comprendre les notions, les outils et les usages du monde numérique.</p></a></li>
       <li><a href="#p3" class="violet"><span class="n">03</span><h3>Pix : quoi, pourquoi, comment</h3><span class="min"></span><p>La plateforme qui transforme tes compétences en certification.</p></a></li>
-      <li><a href="#p4" class="green"><span class="n">04</span><h3>Les 5 domaines</h3><span class="min"></span><p>16 compétences rangées en 5 familles.</p></a></li>
+      <li><a href="#p4" class="green"><span class="n">04</span><h3>Les 5 domaines</h3><span class="min"></span><p>16 compétences en 5 familles, leurs mots-clés et un jeu de tri.</p></a></li>
       <li><a href="#p5" class="orange"><span class="n">05</span><h3>Compétences et niveaux</h3><span class="min"></span><p>Ce semestre : 4 niveaux par compétence.</p></a></li>
       <li><a href="#p6" class="sky"><span class="n">06</span><h3>Le mode d'emploi du cours</h3><span class="min"></span><p>Comment on va travailler, séance après séance.</p></a></li>
     </ol>
@@ -484,7 +548,7 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
     <div class="quiz" data-answer="1" data-ok="C'est ça" data-ko="Bien tenté" data-why="Avec Pix : une plateforme qui teste tes compétences, te donne un niveau et peut délivrer une certification à mettre sur ton CV.">
       <button class="opt" data-k="0"><span class="k">A</span>Avec mon nombre d'abonnés</button>
       <button class="opt" data-k="1"><span class="k">B</span>Avec une certification, comme Pix</button>
-      <button class="opt" data-k="2"><span class="k">C</span>En étant chroniquement en ligne</button>
+      <button class="opt" data-k="2"><span class="k">C</span>En passant 24 h à scroller sur TikTok »</button>
     </div>
   </div>
 </section>
@@ -641,7 +705,7 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <button class="word orange" data-def="Le site qui trouve des pages pour toi : Google, Bing, Qwant.">Moteur de recherche</button>
       <button class="word red" data-def="L'adresse unique d'une page, comme https://pix.fr.">URL</button>
       <button class="word sky" data-def="Des serveurs distants qui gardent tes fichiers et font tourner des services.">Cloud</button>
-      <button class="word violet" data-def="Une suite d'instructions pour résoudre un problème.">Algorithme</button>
+      <button class="word violet" data-def="Une suite finie d’instructions permettant de résoudre un problème.">Algorithme</button>
       <button class="word green" data-def="Un petit fichier qu'un site dépose dans ton navigateur.">Cookie</button>
       <button class="word red" data-def="Un faux message qui veut voler tes identifiants.">Phishing</button>
       <button class="word orange" data-def="L'image que donnent toutes tes traces en ligne.">E-réputation</button>
@@ -739,6 +803,9 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <li><span class="code">1.2</span><div><h3>Gérer des données</h3><p>Ranger, nommer et sauvegarder tes fichiers sans rien perdre.</p></div></li>
       <li><span class="code">1.3</span><div><h3>Traiter des données</h3><p>Trier, filtrer et calculer dans un tableur comme Excel.</p></div></li>
     </ul>
+    <!-- Mots-clés du domaine masqués :
+    <div class="kw"><span class="kw-l">Mots-clés du domaine</span><div class="tags"><span class="tag">Recherche</span><span class="tag">Moteur de recherche</span><span class="tag">Source fiable</span><span class="tag">Veille</span><span class="tag">Fichier</span><span class="tag">Dossier</span><span class="tag">Sauvegarde</span><span class="tag">Cloud</span><span class="tag">Tableur</span><span class="tag">Formule</span></div></div>
+    -->
     </div>
     <div class="iart" aria-hidden="true"><svg viewBox="0 0 280 240"><rect x="26" y="24" width="150" height="120" rx="14" fill="var(--blue-b)"/>
 <rect x="44" y="44" width="96" height="9" rx="4.5" fill="#fff"/><rect x="44" y="64" width="114" height="9" rx="4.5" fill="#fff"/><rect class="hit" x="44" y="84" width="80" height="9" rx="4.5" fill="var(--bar)"/><rect x="44" y="104" width="104" height="9" rx="4.5" fill="#fff"/>
@@ -746,6 +813,21 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
 <path d="M40 176h44l8-10h50v62H40z" fill="var(--blue)"/><rect x="40" y="180" width="102" height="48" rx="6" fill="#5E78E6"/>
 <line x1="170" y1="226" x2="262" y2="226" stroke="#ECEAE4" stroke-width="3" stroke-linecap="round"/>
 <rect class="gbar" style="--k:0" x="178" y="186" width="18" height="40" rx="9" fill="var(--blue-b)"/><rect class="gbar" style="--k:1" x="206" y="160" width="18" height="66" rx="9" fill="#9DB0F2"/><rect class="gbar" style="--k:2" x="234" y="130" width="18" height="96" rx="9" fill="var(--blue)"/></svg></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner wide blue">
+    <p class="kicker">Domaine 1 · 5 mots à connaître</p>
+    <h2 class="title">Informations et données </h2>
+    <div class="flash">
+      <button class="fc" aria-expanded="false"><span class="t"><i>1</i>Moteur de recherche</span><span class="tap">Touche pour voir la définition</span><span class="d">Un site qui trouve des pages web à partir de <b>mots-clés</b> : Google, Bing, Qwant. Ce n'est pas un navigateur.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>2</i>Source fiable</span><span class="tap">Touche pour voir la définition</span><span class="d">Une information dont on connaît <b>l'auteur</b>, la <b>date</b>, et qu'on peut <b>vérifier</b> sur d'autres sites sérieux.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>3</i>Veille</span><span class="tap">Touche pour voir la définition</span><span class="d">Suivre <b>régulièrement</b> un sujet pour rester à jour : abonnements à des sites, alertes Google.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>4</i>Arborescence</span><span class="tap">Touche pour voir la définition</span><span class="d">L'organisation de tes <b>dossiers et sous-dossiers</b>, comme les branches d'un arbre. Elle évite de perdre tes fichiers.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>5</i>Tableur</span><span class="tap">Touche pour voir la définition</span><span class="d">Un logiciel de <b>tableaux qui calculent</b> : Excel, LibreOffice Calc, Google Sheets. On y trie, filtre et écrit des formules.</span></button>
+    </div>
+    <div class="row"><p class="small"></p><button class="pill showall">Tout afficher</button></div>
   </div>
 </section>
 
@@ -760,11 +842,29 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <li><span class="code">2.3</span><div><h3>Collaborer</h3><p>Travailler à plusieurs sur un même document en ligne.</p></div></li>
       <li><span class="code">2.4</span><div><h3>S'insérer dans le monde numérique</h3><p>Gérer ton identité numérique et ta réputation en ligne.</p></div></li>
     </ul>
+    <!-- Mots-clés du domaine masqués :
+    <div class="kw"><span class="kw-l">Mots-clés du domaine</span><div class="tags"><span class="tag">Courriel</span><span class="tag">Messagerie</span><span class="tag">Pièce jointe</span><span class="tag">Netiquette</span><span class="tag">Partage</span><span class="tag">Publication</span><span class="tag">Collaboration</span><span class="tag">Réseau social</span><span class="tag">E-réputation</span></div></div>
+    -->
     </div>
     <div class="iart" aria-hidden="true"><svg viewBox="0 0 280 240"><g class="msg m1"><rect x="20" y="22" width="150" height="40" rx="20" fill="var(--soft)"/><rect x="38" y="38" width="96" height="8" rx="4" fill="#D9D6CF"/></g>
 <g class="msg m2"><rect x="110" y="78" width="150" height="40" rx="20" fill="var(--green)"/><rect x="128" y="94" width="104" height="8" rx="4" fill="#fff" opacity=".85"/></g>
 <g class="msg m3"><rect x="20" y="134" width="150" height="40" rx="20" fill="var(--soft)"/><rect x="38" y="150" width="80" height="8" rx="4" fill="#D9D6CF"/></g>
 <g class="msg m4"><rect x="180" y="186" width="80" height="36" rx="18" fill="var(--green-b)"/><circle class="td" cx="204" cy="204" r="5" fill="var(--green)"/><circle class="td" style="animation-delay:.2s" cx="220" cy="204" r="5" fill="var(--green)"/><circle class="td" style="animation-delay:.4s" cx="236" cy="204" r="5" fill="var(--green)"/></g></svg></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner wide green">
+    <p class="kicker">Domaine 2 · 5 mots à connaître</p>
+    <h2 class="title">Communication et collaboration </h2>
+    <div class="flash">
+      <button class="fc" aria-expanded="false"><span class="t"><i>1</i>Courriel</span><span class="tap">Touche pour voir la définition</span><span class="d">Un message envoyé par Internet (e-mail), avec un <b>destinataire</b>, un <b>objet</b>, parfois des copies (Cc, Cci) et des pièces jointes.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>2</i>Netiquette</span><span class="tap">Touche pour voir la définition</span><span class="d">Les <b>règles de politesse</b> en ligne : saluer, signer, ne pas écrire en MAJUSCULES, rester respectueux.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>3</i>Document partagé</span><span class="tap">Touche pour voir la définition</span><span class="d">Un fichier en ligne que <b>plusieurs personnes modifient en même temps</b> : Google Docs, Word en ligne.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>4</i>Réseau social</span><span class="tap">Touche pour voir la définition</span><span class="d">Une plateforme pour <b>publier et échanger</b> avec d'autres : Instagram, TikTok, LinkedIn. Une publication peut être publique ou privée.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>5</i>Identité numérique</span><span class="tap">Touche pour voir la définition</span><span class="d">Tout ce qu'on trouve sur toi en ligne : profils, photos, commentaires, traces. Elle construit ton <b>e-réputation</b>.</span></button>
+    </div>
+    <div class="row"><p class="small"></p><button class="pill showall">Tout afficher</button></div>
   </div>
 </section>
 
@@ -779,6 +879,9 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <li><span class="code">3.3</span><div><h3>Adapter les documents à leur finalité</h3><p>Le bon format, le droit d'auteur, le droit à l'image.</p></div></li>
       <li><span class="code">3.4</span><div><h3>Programmer</h3><p>Lire et écrire des algorithmes et de petits programmes.</p></div></li>
     </ul>
+    <!-- Mots-clés du domaine masqués :
+    <div class="kw"><span class="kw-l">Mots-clés du domaine</span><div class="tags"><span class="tag">Traitement de texte</span><span class="tag">Mise en forme</span><span class="tag">Sommaire</span><span class="tag">Diaporama</span><span class="tag">Multimédia</span><span class="tag">Format</span><span class="tag">PDF</span><span class="tag">Droit d'auteur</span><span class="tag">Licence</span><span class="tag">Programme</span></div></div>
+    -->
     </div>
     <div class="iart" aria-hidden="true"><svg viewBox="0 0 280 240"><rect x="22" y="18" width="130" height="164" rx="12" fill="var(--orange-b)"/>
 <rect x="38" y="36" width="70" height="11" rx="5.5" fill="var(--orange)"/>
@@ -786,6 +889,21 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
 <rect x="38" y="112" width="96" height="54" rx="8" fill="#fff"/><circle cx="58" cy="128" r="7" fill="var(--bar)"/><path d="M42 162l26-22 18 14 14-10 30 18z" fill="#F2C595"/>
 <g class="play"><circle cx="210" cy="70" r="40" fill="var(--orange)"/><path d="M200 52l28 18-28 18z" fill="#fff"/></g>
 <rect x="166" y="138" width="96" height="72" rx="12" fill="var(--soft)"/><text x="214" y="184" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="26" font-weight="700" fill="var(--orange)">&lt;/&gt;</text><rect class="caretb" x="246" y="164" width="3" height="26" rx="1.5" fill="var(--ink)"/></svg></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner wide orange">
+    <p class="kicker">Domaine 3 · 5 mots à connaître</p>
+    <h2 class="title">Création de contenu </h2>
+    <div class="flash">
+      <button class="fc" aria-expanded="false"><span class="t"><i>1</i>Style de titre</span><span class="tap">Touche pour voir la définition</span><span class="d">Une mise en forme appliquée aux titres d'un document. Elle permet de créer un <b>sommaire automatique</b>.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>2</i>Multimédia</span><span class="tap">Touche pour voir la définition</span><span class="d">Un contenu qui <b>mélange</b> texte, image, son et vidéo : un diaporama, un podcast, une vidéo montée.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>3</i>Format de fichier</span><span class="tap">Touche pour voir la définition</span><span class="d">La façon dont un fichier est enregistré, reconnue par son <b>extension</b> : .docx, .pdf, .jpg, .mp3, .mp4.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>4</i>Droit d'auteur</span><span class="tap">Touche pour voir la définition</span><span class="d">Il protège une œuvre (texte, image, musique). On ne la réutilise pas <b>sans autorisation</b> ou sans licence, et on <b>cite</b> la source.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>5</i>Programme</span><span class="tap">Touche pour voir la définition</span><span class="d">Un <b>algorithme</b> écrit dans un langage que l'ordinateur comprend : Python, Scratch, JavaScript.</span></button>
+    </div>
+    <div class="row"><p class="small"></p><button class="pill showall">Tout afficher</button></div>
   </div>
 </section>
 
@@ -799,11 +917,27 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <li><span class="code">4.2</span><div><h3>Protéger les données personnelles et la vie privée</h3><p>Mots de passe solides, confidentialité, cookies.</p></div></li>
       <li><span class="code">4.3</span><div><h3>Protéger la santé, le bien-être et l'environnement</h3><p>Temps d'écran, cyberharcèlement, sobriété numérique.</p></div></li>
     </ul>
+    <!-- <div class="kw"><span class="kw-l">Mots-clés du domaine</span><div class="tags"><span class="tag">Mot de passe</span><span class="tag">Phishing</span><span class="tag">Antivirus</span><span class="tag">Mise à jour</span><span class="tag">Données personnelles</span><span class="tag">Cookies</span><span class="tag">RGPD</span><span class="tag">Cyberharcèlement</span><span class="tag">Sobriété numérique</span></div></div> -->
     </div>
     <div class="iart" aria-hidden="true"><svg viewBox="0 0 280 240"><path d="M140 18l82 28v58c0 52-36 86-82 108-46-22-82-56-82-108V46z" fill="var(--red-b)"/>
 <rect x="104" y="102" width="72" height="58" rx="12" fill="var(--red)"/><path class="shackle" d="M116 104V86a24 24 0 0 1 48 0v18" stroke="var(--red)" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="140" cy="126" r="7" fill="#fff"/><rect x="137" y="128" width="6" height="16" rx="3" fill="#fff"/>
 <rect class="scanl" x="70" y="40" width="140" height="4" rx="2" fill="var(--bar)" opacity=".8"/>
 <path class="heart" d="M226 186c-8-10-26-6-26 8 0 14 26 26 26 26s26-12 26-26c0-14-18-18-26-8z" fill="var(--pink)"/></svg></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inner wide red">
+    <p class="kicker">Domaine 4 · 5 mots à connaître</p>
+    <h2 class="title">Protection et sécurité </h2>
+    <div class="flash">
+      <button class="fc" aria-expanded="false"><span class="t"><i>1</i>Mot de passe robuste</span><span class="tap">Touche pour voir la définition</span><span class="d">Long (12 caractères ou plus), avec <b>majuscules, chiffres et symboles</b>, et <b>différent</b> pour chaque compte.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>2</i>Logiciel malveillant</span><span class="tap">Touche pour voir la définition</span><span class="d">Un programme fait pour nuire (virus, rançongiciel, espion). On s'en protège avec un <b>antivirus</b> et les <b>mises à jour</b>.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>3</i>Données personnelles</span><span class="tap">Touche pour voir la définition</span><span class="d">Toute info qui permet de t'<b>identifier</b> : nom, photo, adresse, numéro, localisation.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>4</i>RGPD</span><span class="tap">Touche pour voir la définition</span><span class="d">La loi européenne qui <b>protège tes données personnelles</b> : tu peux savoir ce qu'on garde sur toi et demander à l'effacer.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>5</i>Cyberharcèlement</span><span class="tap">Touche pour voir la définition</span><span class="d">Du harcèlement <b>en ligne</b> : messages, moqueries ou photos répétés pour blesser. On le signale, on ne reste pas seul.</span></button>
+    </div>
+    <div class="row"><p class="small"></p><button class="pill showall">Tout afficher</button></div>
   </div>
 </section>
 
@@ -816,6 +950,9 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
       <li><span class="code">5.1</span><div><h3>Résoudre des problèmes techniques</h3><p>Wi-Fi qui saute, écran qui ne s'affiche pas : les bons réflexes.</p></div></li>
       <li><span class="code">5.2</span><div><h3>Construire un environnement numérique</h3><p>Installer, configurer et organiser tes outils.</p></div></li>
     </ul>
+    <!-- Mots-clés du domaine masqués :
+    <div class="kw"><span class="kw-l">Mots-clés du domaine</span><div class="tags"><span class="tag">Matériel</span><span class="tag">Logiciel</span><span class="tag">Système d'exploitation</span><span class="tag">Périphérique</span><span class="tag">Pilote</span><span class="tag">Installation</span><span class="tag">Wi-Fi</span><span class="tag">Panne</span><span class="tag">Paramètres</span></div></div>
+    -->
     </div>
     <div class="iart" aria-hidden="true"><svg viewBox="0 0 280 240"><path class="wifi w3" d="M86 70a76 76 0 0 1 108 0" stroke="var(--violet)" stroke-width="9" fill="none" stroke-linecap="round"/><path class="wifi w2" d="M104 90a50 50 0 0 1 72 0" stroke="var(--violet)" stroke-width="9" fill="none" stroke-linecap="round"/><path class="wifi w1" d="M122 110a24 24 0 0 1 36 0" stroke="var(--violet)" stroke-width="9" fill="none" stroke-linecap="round"/>
 <rect x="60" y="130" width="160" height="88" rx="10" fill="var(--violet)"/><rect x="70" y="140" width="140" height="68" rx="5" fill="var(--violet-b)"/><rect x="42" y="218" width="196" height="10" rx="5" fill="var(--violet)"/>
@@ -823,6 +960,53 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
 <circle class="ok" cx="196" cy="150" r="10" fill="var(--green)"/><path class="ok" d="M191 150l4 4 7-7" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
 </section>
+
+<section class="slide">
+  <div class="inner wide violet">
+    <p class="kicker">Domaine 5 · 5 mots à connaître</p>
+    <h2 class="title">Environnement numérique </h2>
+    <div class="flash">
+      <button class="fc" aria-expanded="false"><span class="t"><i>1</i>Matériel</span><span class="tap">Touche pour voir la définition</span><span class="d">La partie <b>physique</b> de l'ordinateur, celle qu'on peut toucher : écran, clavier, processeur, mémoire, disque.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>2</i>Logiciel</span><span class="tap">Touche pour voir la définition</span><span class="d">Un <b>programme</b> qu'on installe pour faire une tâche : traitement de texte, navigateur, jeu, antivirus.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>3</i>Système d'exploitation</span><span class="tap">Touche pour voir la définition</span><span class="d">Le logiciel principal qui <b>fait tourner l'appareil</b> et les autres logiciels : Windows, macOS, Linux, Android, iOS.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>4</i>Périphérique</span><span class="tap">Touche pour voir la définition</span><span class="d">Un appareil <b>branché</b> à l'ordinateur : souris, clavier, imprimante, casque, clé USB.</span></button>
+      <button class="fc" aria-expanded="false"><span class="t"><i>5</i>Pilote</span><span class="tap">Touche pour voir la définition</span><span class="d">Un petit logiciel (driver) qui permet à l'ordinateur de <b>dialoguer avec un périphérique</b>, comme une imprimante.</span></button>
+    </div>
+    <div class="row"><p class="small"></p><button class="pill showall">Tout afficher</button></div>
+  </div>
+</section>
+
+
+<section class="slide" id="tri">
+  <div class="inner wide green">
+    <p class="kicker">Exercice · Le jeu du tri</p>
+    <h2 class="title">Cette question, c'est quel domaine ?</h2>
+    <div class="row"><span class="gscore" id="gpos">Question 1</span><span class="gscore" id="gscore">Score : <b>0</b></span></div>
+    <div class="gq" id="gq" aria-live="polite">…</div>
+    <div class="dpick" id="gpick">
+      <button class="dbtn blue" data-d="1"><span class="num">1</span><span>Informations et données</span></button>
+      <button class="dbtn green" data-d="2"><span class="num">2</span><span>Communication et collaboration</span></button>
+      <button class="dbtn orange" data-d="3"><span class="num">3</span><span>Création de contenu</span></button>
+      <button class="dbtn red" data-d="4"><span class="num">4</span><span>Protection et sécurité</span></button>
+      <button class="dbtn violet" data-d="5"><span class="num">5</span><span>Environnement numérique</span></button>
+    </div>
+    <div id="gfb"></div>
+    <div class="row"><span class="small">Lis la question, puis touche le bon domaine.</span><button class="pill main" id="gnext" hidden>Question suivante</button></div>
+  </div>
+</section>
+
+<!-- <section class="slide" id="classe">
+  <div class="inner wide sky">
+    <p class="kicker">À toi de jouer</p>
+    <h2 class="title">Écris une question, je te dis dans quel domaine elle va</h2>
+    <form class="ask" id="askf" autocomplete="off">
+      <input id="askq" type="text" placeholder="Ex. : Comment protéger mon compte Instagram ?" aria-label="Ta question">
+      <button class="pill main" type="submit">Classer</button>
+    </form>
+    <div id="askr" aria-live="polite"><p class="small">Je repère les mots-clés de ta question et je les compare à ceux des 5 domaines.</p></div>
+    <p class="added" id="added"></p>
+  </div>
+</section> -->
 
 <!-- ===== PARTIE 05 · COMPÉTENCES ET NIVEAUX ===== -->
 <section class="slide" id="p5">
@@ -969,6 +1153,7 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
   document.getElementById("up").onclick=()=>go(cur-1);
   document.getElementById("down").onclick=()=>go(cur+1);
   document.addEventListener("keydown",e=>{
+    if(e.target.closest("input,textarea,select"))return;
     if(["ArrowDown","PageDown"].includes(e.key)||(e.key===" "&&!e.target.closest("button,a"))){e.preventDefault();go(cur+1)}
     else if(["ArrowUp","PageUp"].includes(e.key)){e.preventDefault();go(cur-1)}
     else if(e.key==="Home"){e.preventDefault();go(0)}else if(e.key==="End"){e.preventDefault();go(N-1)}
@@ -1022,6 +1207,119 @@ svg .ok{transform-box:fill-box;transform-origin:center;animation:popl 3s ease-in
     document.querySelectorAll(".word").forEach(x=>x.setAttribute("aria-pressed",x===w?"true":"false"));
     def.innerHTML="<b></b> : <span></span>";def.querySelector("b").textContent=w.textContent;def.querySelector("span").textContent=w.dataset.def;fit(w.closest(".slide"))}));
   document.querySelectorAll(".word").forEach(w=>w.setAttribute("aria-pressed","false"));
+
+  // ===== 5 mots par domaine : touche une carte pour voir la définition =====
+  document.querySelectorAll(".fc").forEach(c=>c.addEventListener("click",()=>{
+    c.setAttribute("aria-expanded",c.getAttribute("aria-expanded")==="true"?"false":"true");fit(c.closest(".slide"))}));
+  document.querySelectorAll(".showall").forEach(b=>b.addEventListener("click",()=>{
+    const s=b.closest(".slide"),cs=[...s.querySelectorAll(".fc")],open=cs.every(c=>c.getAttribute("aria-expanded")==="true");
+    cs.forEach(c=>c.setAttribute("aria-expanded",open?"false":"true"));b.textContent=open?"Tout afficher":"Tout cacher";fit(s)}));
+
+  // ===== Domaines, compétences et mots-clés (servent au jeu et au classement) =====
+  const DOMS={1:["Informations et données","blue"],2:["Communication et collaboration","green"],3:["Création de contenu","orange"],4:["Protection et sécurité","red"],5:["Environnement numérique","violet"]};
+  const COMPS={"1.1":"Mener une recherche et une veille d'information","1.2":"Gérer des données","1.3":"Traiter des données",
+    "2.1":"Interagir","2.2":"Partager et publier","2.3":"Collaborer","2.4":"S'insérer dans le monde numérique",
+    "3.1":"Développer des documents textuels","3.2":"Développer des documents multimédias","3.3":"Adapter les documents à leur finalité","3.4":"Programmer",
+    "4.1":"Sécuriser l'environnement numérique","4.2":"Protéger les données personnelles et la vie privée","4.3":"Protéger la santé, le bien-être et l'environnement",
+    "5.1":"Résoudre des problèmes techniques","5.2":"Construire un environnement numérique"};
+  // Chaque mot-clé est un début de mot ("recherch" trouve recherche, rechercher…). "|3" = poids plus fort.
+  const KW={
+    "1.1":"recherch|2,moteur,google,bing,qwant,source|2,fiable|2,fiabilit|2,verifi,veille|2,alerte,rss,fake news|3,infox|3,rumeur,wikipedia,article,info|2,vrai|2,croire",
+    "1.2":"fichier|2,dossier|2,ranger|2,rangement|2,classer,nommer,renomm|2,sauvegard|2,cloud,drive,onedrive,cle usb,retrouver,perdu,extension,arborescence|3,zip,compress",
+    "1.3":"tableur|3,excel|3,calc,sheets|2,tableau,cellule|2,formule|2,moyenne|2,somme,calcul|2,trier|2,tri,filtr|2,graphique,donnee,csv|2,colonne,pourcentage",
+    "2.1":"mail|2,email|2,e-mail|2,courriel|3,message,messagerie|2,piece jointe|3,destinataire|2,cci|2,repondre,envoyer|2,whatsapp,visio,zoom,teams,discord,forum,chat,poli,netiquette|3,ecrire a",
+    "2.2":"partag|2,publi|2,poster,post,reseau social|3,reseaux sociaux|3,instagram,tiktok,facebook,youtube,snapchat,citer|2,lien,story",
+    "2.3":"collabor|3,a plusieurs|3,ensemble,groupe,equipe,co-edit|3,coedit|3,document partage|3,commentaire,agenda,calendrier,sondage,google docs|3,en meme temps|2",
+    "2.4":"identite numerique|4,e-reputation|4,reputation|3,recruteur|3,profil,mon nom|3,cv en ligne|3,linkedin|2,trace|2,image de moi",
+    "3.1":"word|2,writer|2,traitement de texte|3,texte,rapport|2,mise en forme|3,titre,style|2,sommaire|3,table des matieres|3,police,paragraphe,marge,numerot,en-tete|2,pied de page|2,lettre,cv",
+    "3.2":"diaporama|3,powerpoint|3,presentation,image,photo,retouch|2,video|2,montage|3,monter|2,son,audio|2,podcast|3,multimedia|3,dessin,affiche|2,canva",
+    "3.3":"format|2,pdf|2,export|2,convertir|2,droit d auteur|4,licence|3,creative commons|4,droit a l image|4,plagi|3,copier-coller,taille du fichier|2,le droit|3,droit de|3,trouvee sur internet|2",
+    "3.4":"programm|3,code,coder|3,algorithm|3,python|3,scratch|3,boucle|2,variable|2,html|2,javascript|3,instruction",
+    "4.1":"virus|3,antivirus|3,malware|3,malveillant|3,rancon|3,phishing|4,hameconnage|4,arnaque|3,faux mail|3,faux sms|3,faux site|3,faux message|3,pirat|3,hack|3,mise a jour|2,mises a jour|2,securis|2,pare-feu|3,spam|2,sms,clique,lien suspect|3",
+    "4.2":"mot de passe|4,mots de passe|4,mdp|3,donnees personnelles|4,vie privee|4,confidentialit|3,cookie|3,rgpd|4,geolocalis|3,localisation|2,double authentification|4,2fa|3,compte|2,code bancaire|3,banque|2,webcam,proteger mon,identifiant|2",
+    "4.3":"harcel|4,cyberharcel|4,temps d ecran|4,heures par jour|3,sante|3,sommeil|3,addiction|3,accro|3,bien-etre|3,fatigue|2,posture|2,yeux|2,ecolog|3,energie|2,pollu|3,sobriete|3,recycl|3,carbone|3,environnement|2,grave",
+    "5.1":"panne|3,bug|3,plante|2,bloque|2,lent|2,ne marche|3,ne fonctionne|3,marche plus|3,fonctionne plus|3,s allume|3,redemarr|3,reinitialis|2,wifi|2,wi-fi|2,connexion|2,imprim|2,ecran noir|3,batterie|2,souris,clavier,bluetooth|2,probleme|2,que faire,reparer|3,depann|3",
+    "5.2":"install|3,desinstall|3,logiciel|2,application,appli,systeme d exploitation|4,windows|2,macos|2,linux|2,android|2,pilote|3,driver|3,parametr|2,configur|3,peripherique|3,memoire|2,stockage|2,espace disque|3,materiel|3,navigateur,raccourci|2,environnement numerique|4,personnalis|2,ordinateur"
+  };
+  const norm=s=>" "+s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’'`]/g," ").replace(/[^a-z0-9+-]+/g," ").trim()+" ";
+  const KWL=[];Object.entries(KW).forEach(([c,l])=>l.split(",").forEach(x=>{const [p,w]=x.split("|");KWL.push({c,p:norm(p).trimEnd(),w:+(w||1),label:p})}));
+  function classify(q){const t=norm(q),comp={},dom={1:0,2:0,3:0,4:0,5:0},hits={1:[],2:[],3:[],4:[],5:[]};
+    const ow=q.replace(/[’'`]/g," ").split(/[^A-Za-zÀ-ÿ0-9+-]+/).filter(Boolean),nw=ow.map(w=>norm(w).trim());
+    const lab=k=>{const pw=k.p.trim(),n=pw.split(" ").length;for(let i=0;i<nw.length;i++){if(nw.slice(i,i+n).join(" ").startsWith(pw))return ow.slice(i,i+n).join(" ").toLowerCase()}return k.label};
+    KWL.forEach(k=>{if(t.includes(k.p)){comp[k.c]=(comp[k.c]||0)+k.w;const d=k.c[0];dom[d]+=k.w;const L=lab(k);if(!hits[d].includes(L))hits[d].push(L)}});
+    const order=Object.keys(dom).sort((a,b)=>dom[b]-dom[a]);const best=order[0];if(!dom[best])return null;
+    const bc=Object.keys(comp).filter(c=>c[0]===best).sort((a,b)=>comp[b]-comp[a])[0];
+    return {d:+best,c:bc,hits:hits[best],second:dom[order[1]]&&dom[order[1]]>=dom[best]*.75?+order[1]:0}}
+
+  // ===== Le jeu du tri =====
+  const BASE=[
+    ["Je cherche des infos pour un exposé : comment savoir si un site est fiable ?","1.1","Chercher une information et vérifier qu'elle est fiable."],
+    ["Je veux calculer la moyenne de mes notes dans un tableur.","1.3","Calculer, trier ou filtrer dans un tableur, c'est traiter des données."],
+    ["J'ai 200 fichiers « Document1 » sur mon bureau. Comment m'y retrouver ?","1.2","Ranger, nommer et sauvegarder ses fichiers, c'est gérer des données."],
+    ["Comment écrire un mail poli à mon professeur, avec une pièce jointe ?","2.1","Écrire le bon message, au bon endroit, avec le bon ton : interagir."],
+    ["On doit rédiger un exposé à 4, sur le même document, en même temps.","2.3","Travailler à plusieurs sur un document en ligne : collaborer."],
+    ["Qu'est-ce qu'un recruteur trouve s'il tape mon nom sur Internet ?","2.4","Ton identité numérique et ton e-réputation."],
+    ["Je veux publier une photo de mon groupe d'amis sur Instagram.","2.2","Publier en public ou en privé, et respecter les autres : partager et publier."],
+    ["Comment créer un sommaire automatique dans mon rapport ?","3.1","Titres, styles et sommaire : développer des documents textuels."],
+    ["Je veux monter une petite vidéo pour présenter mon projet.","3.2","Image, son, vidéo : développer des documents multimédias."],
+    ["J'ai le droit de mettre une image trouvée sur Internet dans mon exposé ?","3.3","Droit d'auteur et droit à l'image : adapter les documents à leur finalité."],
+    ["Je reçois un SMS de « ma banque » qui me demande mon code.","4.1","C'est du phishing : savoir repérer une arnaque, c'est sécuriser son environnement."],
+    ["Comment créer un mot de passe solide pour mes comptes ?","4.2","Protéger ses comptes et ses données personnelles."],
+    ["Je passe 7 heures par jour sur mon téléphone, c'est grave ?","4.3","Temps d'écran et bien-être : protéger sa santé."],
+    ["Mon imprimante n'imprime plus rien. Que faire ?","5.1","Avoir les bons réflexes face à une panne : résoudre des problèmes techniques."],
+    ["Comment installer et configurer un nouveau logiciel ?","5.2","Installer et paramétrer ses outils : construire son environnement numérique."]
+  ];
+  let extra=[];try{localStorage.removeItem("pix-tri-extra")}catch(e){}
+  const gq=document.getElementById("gq"),gpick=document.getElementById("gpick"),gfb=document.getElementById("gfb"),gnext=document.getElementById("gnext"),
+        gpos=document.getElementById("gpos"),gscore=document.getElementById("gscore"),gslide=document.getElementById("tri");
+  let deck=[],gi=0,score=0,answered=false;
+  const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+  function startGame(){deck=shuffle([...BASE,...extra]);gi=0;score=0;showQ()}
+  function showQ(){answered=false;gfb.innerHTML="";gnext.hidden=true;
+    gpick.querySelectorAll(".dbtn").forEach(b=>{b.className="dbtn "+DOMS[b.dataset.d][1];b.removeAttribute("aria-disabled")});
+    if(gi>=deck.length){gpick.hidden=true;gq.textContent="Terminé ! Tu as "+score+" bonne"+(score>1?"s":"")+" réponse"+(score>1?"s":"")+" sur "+deck.length+".";
+      gpos.textContent="Fin du jeu";gnext.textContent="Rejouer";gnext.hidden=false;fit(gslide);return}
+    gpick.hidden=false;gq.textContent=deck[gi][0];gpos.textContent="Question "+(gi+1)+" sur "+deck.length;
+    gscore.innerHTML="Score : <b>"+score+"</b>";fit(gslide)}
+  gpick.querySelectorAll(".dbtn").forEach(b=>b.addEventListener("click",()=>{
+    if(answered)return;answered=true;const q=deck[gi],good=+q[1][0],ok=+b.dataset.d===good;if(ok)score++;
+    gpick.querySelectorAll(".dbtn").forEach(x=>{x.setAttribute("aria-disabled","true");const d=+x.dataset.d;
+      if(d===good)x.classList.add("good");else if(x===b)x.classList.add("bad");else x.classList.add("dim")});
+    const r=document.createElement("div");r.className="reveal";r.setAttribute("role","status");
+    r.innerHTML='<span class="numi">'+NUMI+'</span><div><b></b><span class="w"></span></div>';
+    r.querySelector("b").textContent=(ok?"Bien vu ! ":"Pas tout à fait. ")+"Domaine "+good+" · compétence "+q[1]+" ("+COMPS[q[1]]+")";
+    r.querySelector(".w").textContent=q[2];gfb.appendChild(r);
+    gscore.innerHTML="Score : <b>"+score+"</b>";gnext.textContent=gi+1<deck.length?"Question suivante":"Voir mon score";gnext.hidden=false;fit(gslide)}));
+  gnext.addEventListener("click",()=>{if(gi>=deck.length){startGame();return}gi++;showQ()});
+  startGame();
+
+  // ===== Écris une question : classement automatique =====
+  const askf=document.getElementById("askf"),askq=document.getElementById("askq"),askr=document.getElementById("askr"),added=document.getElementById("added"),aslide=document.getElementById("classe");
+  function showAdded(){added.textContent=extra.length?extra.length+" question"+(extra.length>1?"s":"")+" ajoutée"+(extra.length>1?"s":"")+" au jeu du tri.":""}
+  if(askf){showAdded();
+  function render(q,res,pickD){
+    const d=pickD||(res?res.d:0);askr.innerHTML="";const box=document.createElement("div");box.className="res "+(d?DOMS[d][1]:"");
+    if(d){const fromKw=res&&res.d===d;
+      box.innerHTML='<div class="dn"><span class="num">'+d+'</span><span>Domaine '+d+' · '+DOMS[d][0]+'</span></div>';
+      const p=document.createElement("p");
+      p.innerHTML=fromKw?"Compétence probable : <b>"+res.c+"</b> · "+COMPS[res.c]+".":"Domaine choisi par toi.";box.appendChild(p);
+      if(fromKw&&res.hits.length){const t=document.createElement("div");t.className="tags";
+        res.hits.forEach(h=>{const s=document.createElement("span");s.className="tag";s.textContent=h;t.appendChild(s)});
+        const l=document.createElement("p");l.className="small";l.textContent="Mots-clés repérés :";box.appendChild(l);box.appendChild(t)}
+      if(fromKw&&res.second&&!pickD){const s=document.createElement("p");s.className="small";s.textContent="J'hésite aussi avec le domaine "+res.second+" · "+DOMS[res.second][0]+".";box.appendChild(s)}
+    }else{box.innerHTML='<p>Je ne trouve pas de mot-clé connu dans ta question. Choisis toi-même le domaine :</p>'}
+    const fx=document.createElement("div");fx.className="fix";fx.innerHTML="<span>"+(d?"Pas d'accord ? Choisis :":"Domaine :")+"</span>";
+    [1,2,3,4,5].forEach(n=>{const b=document.createElement("button");b.type="button";b.textContent=n;b.title=DOMS[n][0];b.className=DOMS[n][1];
+      b.style.cssText="background:var(--b);color:var(--c)";if(n===d){b.setAttribute("aria-pressed","true");b.style.cssText="background:var(--c);color:#fff"}
+      b.addEventListener("click",()=>render(q,res,n));fx.appendChild(b)});box.appendChild(fx);
+    if(d){const add=document.createElement("button");add.type="button";add.className="pill main";add.textContent="Ajouter au jeu du tri";
+      add.addEventListener("click",()=>{const c=(res&&res.d===d)?res.c:Object.keys(COMPS).find(k=>k[0]==String(d));
+        extra.push([q,c,"Question ajoutée en classe : domaine "+d+" · "+DOMS[d][0]+"."]);
+        add.textContent="Ajoutée ✓";add.disabled=true;add.style.opacity=".6";showAdded();
+        if(gi<deck.length){deck.push(extra[extra.length-1]);gpos.textContent="Question "+(gi+1)+" sur "+deck.length}});
+      const row=document.createElement("div");row.className="row";row.appendChild(add);box.appendChild(row)}
+    askr.appendChild(box);fit(aslide)}
+  askf.addEventListener("submit",e=>{e.preventDefault();const q=askq.value.trim();if(!q){askq.focus();return}render(q,classify(q))})}
 
   // Typo française : espace insécable avant ? ! : ; »
   const tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;
